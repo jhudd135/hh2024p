@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "http-server -d ./"
+  },
+  "type": "module",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
