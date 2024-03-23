@@ -1,3 +1,4 @@
-function init() {
-    // do stuff
+import { test } from "./fetch.js";
+export function init() {
+    test();
 }
