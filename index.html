@@ -1,22 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seeker Monkey</title>
+    
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
 
-<head>
+
     <script type="module" src="index.js"></script>
-    <link rel="stylesheet" href="index.css">
+
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/header.css">
     <script type="module" src="wordnet.js"></script>
     <script type="module">
         import {init} from "./index.js"
         window.onload = () => { init(); };
     </script>
-</head>
+  </head>
 
+  <body>
+    <div class="header">
+      <div class="title">Seeker Monkey</div>
+      <div class="upload"><input type="file"  id="fileItem"></div>
+      <div class="confirm" onclick="Confirm()"><button>CONFIRM</button></div>
+    </div>
 
-<body id="body">
-    <div class="title"><h2>Seeker</h2></div>
-    <!-- <div class="confirm"><button>CONFIRM</button></div> -->
-    <!-- <div class="search"><input type="text"><button>SEARCH</button></div> -->
-    <div class="upload"><input type="file" id="fileItem"></div>
     <main>
-        <textarea></textarea>
+      <textarea></textarea>
     </main>
     
-</body>
+    <div class="footer">
+      <div class="search">
+        <input class="search-input" type="text">
+      </div>
+      <button class="search-button">
+        <img class="search-icon" src="icons/search.svg">
+        <!--<div class="tooltip">Search</div>-->
+      </button>
+    </div>
+    
+  </body>
+</html>

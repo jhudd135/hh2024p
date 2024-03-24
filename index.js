@@ -24,6 +24,10 @@ function createConfirm() {
     div.appendChild(button)
     return div
 }
+function Confirm() {
+  toSpans();
+  document.body.insertBefore(createSearch(), document.body.firstChild);
+}
 
 function toSpans() {
     const main = document.getElementsByTagName("main")[0];

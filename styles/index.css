@@ -23,8 +23,6 @@ body {
 }
 
 .search {
-  height: 50px;
-  width: -20px;
 
   margin-right: 20px;
   margin-top: 25px;
@@ -34,8 +32,7 @@ body {
   height: 70px;
   width: 70px;
   border-radius: 35px;
-
-
+  border-width: 0px;
 }
 .search-icon {
   height: 40px;
@@ -57,4 +54,5 @@ textarea {
 
 .search-button {
   background-color: #b6b312;
+  border-width: 0px;
 }
