@@ -1,0 +1,2 @@
+We used the PDF.js library made by Mozilla for pdf functionality. That library can be found here: https://mozilla.github.io/pdf.js/
+We used Wordnet for our semantic relation functionality. More information and the database files can be found here: https://wordnet.princeton.edu
