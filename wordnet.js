@@ -5,7 +5,7 @@ const wordIndex = {};
 const wordData = {};
 
 const wordNetPath = "./node_modules/wordnet-db/dict/";
-export async function setup() {
+export async function setupWordNet() {
     console.log("SETTING UP WORDNET")
     for (let i = 0; i < wordTypes.length; i++) {
         const wt = wordTypes[i]
