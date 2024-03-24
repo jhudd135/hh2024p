@@ -20,7 +20,9 @@ header {
 
 .title {
   margin-left: 5vh;
-  white-space: pre;
+  display: inline;
+  white-space: nowrap;
+  margin-top: -6px;
 }
 
 .upload {
@@ -38,4 +40,7 @@ header {
 }
 
 .logo {
+  height: 50px;
+  position: relative;
+  top: 10px;
 }
