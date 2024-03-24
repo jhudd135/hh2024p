@@ -3,7 +3,7 @@ import {pdfSetup} from "./pdf.js"
 export async function init() {
     await setupWordNet();
     await pdfSetup();
-    document.body.insertBefore(createConfirm(), document.body.firstChild);
+    document.getElementsByTagName("header")[0].appendChild(createConfirm());
     // document.body.insertBefore(createSearch(), document.body.firstChild);
 }
 function fromHtmlText(text) {
@@ -23,10 +23,6 @@ function createConfirm() {
     };
     div.appendChild(button)
     return div
-}
-function Confirm() {
-  toSpans();
-  document.body.insertBefore(createSearch(), document.body.firstChild);
 }
 
 function toSpans() {
@@ -57,7 +53,9 @@ function createSearch() {
     input.type = "text"
     div.appendChild(input);
     const button = document.createElement("button");
-    button.innerText = "SEARCH";
+    const img = document.createElement("img");
+    img.src = "icons/search.svg";
+    button.appendChild(img);
     button.onclick = () => {
         const word = input.value.split(" ")[0].trim().toLowerCase();
         const bubble = getWordBubble(word);
