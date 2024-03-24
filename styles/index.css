@@ -5,6 +5,10 @@ body {
   overflow-x: hidden;
 }
 
+main {
+  margin-top: 60px;
+}
+
 .footer {
   position: fixed;
   display: flex;
@@ -71,6 +75,7 @@ textarea {
 
 .text {
   width: 80vw;
-  margin: 5vh 10vw 0 10vw;
+  margin-left: 10vw;
+  padding-top: 5vh;
   overflow-wrap: break-word;
 }
