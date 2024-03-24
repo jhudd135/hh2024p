@@ -66,8 +66,13 @@ function toSpans() {
     div.classList.add("text");
     sentences.forEach((s, i) => {
         const span = document.createElement("span");
+        span.classList.add("tooltip")
         span.innerText = s;
         span.id = "s" + i
+        const tooltip = document.createElement("span")
+        tooltip.classList.add("tooltiptext");
+        tooltip.style.display = "none";
+        span.appendChild(tooltip)
         div.appendChild(span);
     });
     return div;
@@ -85,20 +90,55 @@ function createSearch() {
     img.src = "icons/search.svg";
     button.appendChild(img);
     button.onclick = () => {
-        const word = input.value.split(" ")[0].trim().toLowerCase();
-        const bubble = getWordBubble(word);
+        const words = input.value.split(/[ ,]/g).map(w => w.trim().toLowerCase()).filter(w => w);
+        // left associative operators & |
+        let bubble = new Set();
+        let op = "";
+        words.forEach(w => {
+            if ("&|".includes(w)) {
+                op = w;
+            } else {
+                if (!op) {
+                    op = "|";
+                }
+                switch (op) {
+                    case "&":
+                        bubble = bubble.intersection(new Set(getWordBubble(w)));
+                        break;
+                    case "|":
+                        bubble = bubble.union(new Set(getWordBubble(w)));
+                }
+                op = "";
+            }
+        })
+        bubble = Array.from(bubble);
+        console.log(words, bubble)
         const text = document.getElementsByClassName("text")[0]
         const sentences = Array.from(text.children).map(c => c.innerText.toLowerCase());
         const values = new Array(sentences.length);
+        const matched = new Array(sentences.length);
         sentences.forEach((s, i) => {
+            matched[i] = [];
             values[i] = 0
             bubble.forEach(w => {
-                values[i] += Array.from(s.matchAll(w)).length;
+                const matches = Array.from(s.matchAll(new RegExp("\\b" + w + "\\b", "g"))).length;
+                values[i] += matches;
+                if (0 < matches) {
+                    matched[i].push(w)
+                }
             });
         });
-        const maxVal = Math.max(...values);
+        const maxVal = Math.max(...values, 0);
         values.forEach((v, i) => {
-            document.getElementById("s" + i).style.backgroundColor = interpolateRGB( "#D7263D","#1e2329", v / maxVal);
+            const span = document.getElementById("s" + i);
+            const tooltip = span.getElementsByClassName("tooltiptext")[0];
+            if (v === 0) {
+                tooltip.style.display = "none";
+            } else {
+                tooltip.style.display = "unset";
+                tooltip.innerText = matched[i].join(", ");
+            }
+            span.style.backgroundColor = interpolateRGB( "#D7263D","#1e2329", maxVal === 0 ? 0 : v / maxVal);
         })
     };
     div.appendChild(button)
