@@ -4,18 +4,19 @@ const translateShortTypes = (s) => wordTypes[shortWordTypes.indexOf(s)];
 const wordIndex = {};
 const wordData = {};
 
+const wordNetPath = "./node_modules/wordnet-db/dict/";
 export async function setup() {
     console.log("SETTING UP WORDNET")
     for (let i = 0; i < wordTypes.length; i++) {
         const wt = wordTypes[i]
-        const response = await fetch("./wordnet/index." + wt);
+        const response = await fetch(wordNetPath + "index." + wt);
         const text = await response.text()
         const lines = text.split("\n").slice(29);
         wordIndex[wt] = lines
     }
     for (let i = 0; i < wordTypes.length; i++) {
         const wt = wordTypes[i]
-        const response = await fetch("./wordnet/data." + wt);
+        const response = await fetch(wordNetPath + "data." + wt);
         // const text = await response.text()
         // const lines = text.split("\n").filter((v, i) => 28 < i);
         wordData[wt] = new Uint8Array(await response.arrayBuffer());
