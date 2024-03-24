@@ -23,20 +23,19 @@ body {
 }
 
 .search {
-
-  margin-right: 20px;
-  margin-top: 25px;
-  border-radius:10px;
+  position: fixed;
+  top: 2vw;
+  right: 2vw;
 }
-.search-button {
+/* .search button {
   height: 70px;
   width: 70px;
   border-radius: 35px;
   border-width: 0px;
 }
-.search-icon {
+.search  {
   height: 40px;
-}
+} */
 
 textarea {
     justify-self: center;
