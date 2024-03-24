@@ -16,18 +16,46 @@ function createConfirm() {
     const div = document.createElement("div");
     div.classList.add("confirm")
     const button = document.createElement("button");
-    button.innerText = "CONFIRM";
+    button.innerText = "Confirm";
     button.onclick = () => {
-        toSpans();
+        const main = document.getElementsByTagName("main")[0];
+        const spans = toSpans()
+        main.textContent = "";
+        main.appendChild(spans);
         document.body.insertBefore(createSearch(), document.body.firstChild);
+        const header = document.getElementsByTagName("header")[0]
+        header.removeChild(header.lastChild);
+        header.appendChild(createEdit());
+    };
+    div.appendChild(button)
+    return div
+}
+
+function createEdit() {
+    const div = document.createElement("div");
+    div.classList.add("confirm")
+    const button = document.createElement("button");
+    button.innerText = "Edit";
+    button.onclick = () => {
+        const main = document.getElementsByTagName("main")[0];
+        const text = main.innerText;
+        const textarea = document.createElement("textarea");
+        textarea.id = "textInput";
+        textarea.value = text;
+        main.textContent = "";
+        main.appendChild(textarea);
+        const header = document.getElementsByTagName("header")[0]
+        header.removeChild(header.lastChild);
+        header.appendChild(createConfirm());
+        document.body.removeChild(document.getElementsByClassName("search")[0]);
     };
     div.appendChild(button)
     return div
 }
 
 function toSpans() {
-    const main = document.getElementsByTagName("main")[0];
-    const textarea = main.getElementsByTagName("textarea")[0];
+    // const main = document.getElementsByTagName("main")[0];
+    const textarea = document.getElementsByTagName("textarea")[0];
     const text = textarea ? textarea.value : pdfText;
     const indices = [-1, ...Array.from(text.matchAll(/[.]/g)).map(m => m.index)];
     const sentences = [];
@@ -42,8 +70,7 @@ function toSpans() {
         span.id = "s" + i
         div.appendChild(span);
     });
-    main.textContent = "";
-    main.appendChild(div);
+    return div;
 }
 
 function createSearch() {
@@ -51,6 +78,7 @@ function createSearch() {
     div.classList.add("search")
     const input = document.createElement("input");
     input.type = "text"
+    input.placeholder = "Search..."
     div.appendChild(input);
     const button = document.createElement("button");
     const img = document.createElement("img");
