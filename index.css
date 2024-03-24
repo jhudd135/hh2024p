@@ -2,7 +2,6 @@ body {
     margin: 0 0;
     background-color: #1e2329;
     color: #ADBDFF;
-    overflow-x: hidden;
 }
 .confirm {
     background-color: #FC9E4F;
@@ -31,17 +30,19 @@ body {
     left: 2vw;
     bottom: 2vw;
 }
-main {
-    display: grid;
+.text {
+    width: 80vw;
+    margin: 5vh 10vw 0 10vw;
+    overflow-wrap: break-word;
+}
+#s1 {
+    background-color: aqua;
 }
 textarea {
-    justify-self: center;
-    background-color: inherit;
     width: 100vw;
     height: 100vh;
-    padding-top: 5vh;
-    padding: 0 10vw;
-    padding-top: 5vh;
+    padding: 5vh 10vw 0 10vw;
+    background-color: inherit;
     border-style: none;
     color: inherit;
     resize: none;
