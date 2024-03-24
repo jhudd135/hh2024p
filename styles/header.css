@@ -13,7 +13,7 @@ header {
   z-index: 100;
 
   font-size: 45px;
-  background-color: #b6b312;
+  background-color: #fffb1c;
   color: black;
   font-family: "Varela Round", Arial;
 }
@@ -28,8 +28,11 @@ header {
 }
 
 .confirm {
-  background-color: #FC9E4F;
+  margin-bottom: 20px;
+  margin-top: -7px;
+  margin-right: 20px;
+
 }
 .confirm button {
-  background-color: inherit;
+  background-color: #aa7cff;
 }

@@ -42,7 +42,7 @@ main {
   border-style: none;
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #b6b312;
+  background-color: #fffb1c;
   
 }
 
@@ -51,7 +51,7 @@ main {
   width: 70px;
   border-radius: 35px;
   border-style: none;
-  background-color: #b6b312;
+  background-color: #fffb1c;
 }
 
 .search img {
@@ -71,17 +71,13 @@ main {
 
 textarea {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh -60);
   padding: 5vh 10vw 0 10vw;
   background-color: inherit;
   border-style: none;
   color: inherit;
   resize: none;
   outline-style: none;
-}
-.search-button {
-  background-color: #b6b312;
-  border-width: 0px;
 }
 
 .text {
