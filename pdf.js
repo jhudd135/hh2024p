@@ -20,15 +20,19 @@ export async function pdfSetup() {
 
 async function openPDF(pdfData) {
     let body = document.getElementById("body");
+    let main = document.getElementById("main");
 
     let prev = document.getElementById("viewer");
 
+    let textArea = document.getElementById("textInput");
+
+    console.log(textArea);
     if (started) {
         body.removeChild(prev);
+    } else {
+        main.removeChild(textArea);
     }
-
     const blob = new Blob([pdfData.data], { type: 'application/pdf' });
-
     const url = URL.createObjectURL(blob);
     
     let viewer = document.createElement("iframe");
@@ -37,7 +41,7 @@ async function openPDF(pdfData) {
     viewer.id="viewer";
 
     
-    body.appendChild(viewer);
+    main.appendChild(viewer);
 
     started = true;
 
