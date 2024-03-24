@@ -116,7 +116,7 @@ function getDataEntry(wt, offset) {
 
 export function getWordBubble(word) {
     const dataEntries = getDataEntriesFromWord(word);
-    const result = new Set([[word, "og"]]);
+    const result = new Set([word]);
     dataEntries.forEach(entry => { // each sense
         entry.word.forEach(w => { // sense synonyms
             // result.add([w.word, "sense"]);
@@ -139,5 +139,5 @@ export function getWordBubble(word) {
             });
         });
     });
-    return Array.from(result);
+    return Array.from(result).map(w => w.replaceAll("_", " "));
 }
