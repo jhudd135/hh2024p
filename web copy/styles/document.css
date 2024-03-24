@@ -1,0 +1,75 @@
+.document {
+  margin-top:80px;
+  display: flexbox;
+  flex-direction: column;
+}
+.input-buttons {
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.input-textbox-button, .input-pdf-button, 
+.upload-button, .search-button {
+  height: 30px;
+  border-radius: 15px;
+  color: white;
+  padding: 4px, 8px;
+  border-width: 0px;
+  display: inline;
+  font-size: 15px;
+
+  background-color: #8695A6;
+}
+
+.input-boxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.paste-box, .search-box {
+  resize: none;
+  height: 250px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-left: 5px;
+  border-radius: 5px;
+}
+
+.paste-box {
+  width: calc(100vw * 0.7 - 50px);
+  height: 250px;
+}
+.search-box {
+  margin-left: 20px;
+  width: calc(100vw * 0.3 - 50px);
+}
+
+
+.upload-button {
+  margin-top: 20px;
+  display: block;
+}
+.search-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  display: block;
+}
+
+.input-textbox-button:hover {
+
+}
+
+.words {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: rgb(255,255,255);
+}
+
+.uploaded-text {
+  margin-top: 40px;
+  color: white;
+  white-space: pre-wrap;
+  font-size: 15px;
+}
