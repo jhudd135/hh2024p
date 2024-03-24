@@ -1,0 +1,49 @@
+body {
+    margin: 0 0;
+    background-color: #1e2329;
+    color: #ADBDFF;
+    overflow-x: hidden;
+}
+.confirm {
+    background-color: #FC9E4F;
+    position: fixed;
+    bottom: 2vw;
+    right: 2vw;
+}
+.confirm button {
+    background-color: inherit;
+}
+.title {
+    position: fixed;
+    top: 2vw;
+    left: 2vw;
+}
+.title h2 {
+    margin: 0 0;
+}
+.search {
+    position: fixed;
+    top: 2vw;
+    right: 2vw;
+}
+.upload {
+    position: fixed;
+    left: 2vw;
+    bottom: 2vw;
+}
+main {
+    display: grid;
+}
+textarea {
+    justify-self: center;
+    background-color: inherit;
+    width: 100vw;
+    height: 100vh;
+    padding-top: 5vh;
+    padding: 0 10vw;
+    padding-top: 5vh;
+    border-style: none;
+    color: inherit;
+    resize: none;
+    outline-style: none;
+}
