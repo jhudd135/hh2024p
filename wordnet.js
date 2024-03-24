@@ -116,3 +116,32 @@ function getDataEntriesFromIndexEntry(entry) {
 function getDataEntry(wt, offset) {
     return parseDataEntry(readArrayBuffer(wordData[wt], offset));
 }
+
+export function getWordBubble(word) {
+    const dataEntries = getDataEntriesFromWord(word);
+    const result = new Set([[word, "og"]]);
+    dataEntries.forEach(entry => { // each sense
+        console.log(entry);
+        entry.word.forEach(w => { // sense synonyms
+            // result.add([w.word, "sense"]);
+            result.add(w.word);
+        });
+        entry.ptr.filter(p => p.pointer_symbol === "~" || p.pointer_symbol === "~").forEach(p => { // hyponyms and derivationally related words
+            const data = getDataEntry(translateShortTypes(p.pos), p.synset_offset);
+            data.word.filter(w => w.lex_id === p.source_target.target).forEach(w => {
+                // result.add([w.word, p.pointer_symbol === "~" ? "hyponym" : "derivation"]);
+                result.add(w.word)
+            });
+        });
+        entry.ptr.filter(p => p.pointer_symbol === "@").forEach(p => { // siblings
+            const data = getDataEntry(translateShortTypes(p.pos), p.synset_offset);
+            data.ptr.filter(p => p.pointer_symbol === "~").forEach(p => {
+                getDataEntry(translateShortTypes(p.pos), p.synset_offset).word.filter(w => w.lex_id === p.source_target.target).forEach(w => {
+                    // result.add([w.word, "sibling"]);
+                    result.add(w.word)
+                });
+            });
+        });
+    });
+    return Array.from(result);
+}

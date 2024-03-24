@@ -1,5 +1,5 @@
-import { setup, getDataEntries } from "./wordnet.js";
+import { setup, getWordBubble } from "./wordnet.js";
 export async function init() {
     await setup();
-    console.log(getDataEntries("table"));
+    console.log(getWordBubble("chair"));
 }
