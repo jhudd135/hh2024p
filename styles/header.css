@@ -31,8 +31,11 @@ header {
   margin-bottom: 20px;
   margin-top: -7px;
   margin-right: 20px;
-
 }
 .confirm button {
   background-color: #aa7cff;
+  font-family: inherit;
+}
+
+.logo {
 }
