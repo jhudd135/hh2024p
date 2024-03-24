@@ -21,14 +21,10 @@ export async function setup() {
         // const lines = text.split("\n").filter((v, i) => 28 < i);
         wordData[wt] = new Uint8Array(await response.arrayBuffer());
     }
-    console.log(wordIndex, wordData);
-
-    
 }
 
 function getIndexEntriesFromWord(word) {
     const firstWord = str => str.substring(0, str.indexOf(" "));
-    console.log("GEI called")
     word = word.toLowerCase();
     const results = []
     wordTypes.forEach(k => {
@@ -122,7 +118,6 @@ export function getWordBubble(word) {
     const dataEntries = getDataEntriesFromWord(word);
     const result = new Set([[word, "og"]]);
     dataEntries.forEach(entry => { // each sense
-        console.log(entry);
         entry.word.forEach(w => { // sense synonyms
             // result.add([w.word, "sense"]);
             result.add(w.word);
