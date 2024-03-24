@@ -2,6 +2,9 @@ import * as pdfjsLib from "./pdfjs-dist/build/pdf.mjs";
 pdfjsLib.GlobalWorkerOptions.workerSrc = "./pdfjs-dist/build/pdf.worker.mjs";
 
 let started = false;
+
+export let pdfText = "";
+
 export async function pdfSetup() {
     var reader = new FileReader();
     const inputElement = document.getElementById("fileItem");
@@ -12,11 +15,13 @@ export async function pdfSetup() {
             reader.onload = async (e) => {
                 var myData = new Uint8Array(e.target.result);
 
-                console.log(await openPDF({data: myData}));
+                pdfText = await openPDF({data: myData});
             }
         }
     }, false);
 }
+
+
 
 async function openPDF(pdfData) {
     let body = document.getElementById("body");

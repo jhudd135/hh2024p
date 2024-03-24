@@ -1,5 +1,5 @@
 import { setupWordNet, getWordBubble } from "./wordnet.js";
-import {pdfSetup} from "./pdf.js"
+import {pdfSetup, pdfText} from "./pdf.js"
 export async function init() {
     await setupWordNet();
     await pdfSetup();
@@ -28,7 +28,7 @@ function createConfirm() {
 function toSpans() {
     const main = document.getElementsByTagName("main")[0];
     const textarea = main.getElementsByTagName("textarea")[0];
-    const text = textarea.value;
+    const text = textarea ? textarea.value : pdfText;
     const indices = [-1, ...Array.from(text.matchAll(/[.]/g)).map(m => m.index)];
     const sentences = [];
     indices.forEach((idx, i) => {
