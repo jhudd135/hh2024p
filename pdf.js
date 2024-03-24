@@ -71,6 +71,6 @@ async function getPDFText(pdfData){
         }));
     }
     return Promise.all(countPromises).then(texts => {
-        return texts.join('').split('.');
+        return texts.join('');
     });
   }
