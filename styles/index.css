@@ -9,7 +9,7 @@ main {
   margin-top: 60px;
 }
 
-.footer {
+/* .footer {
   position: fixed;
   display: flex;
   flex-direction: row;
@@ -24,15 +24,25 @@ main {
   height: 50px;
   margin-right: 20px;
 
-}
+} */
 
 .search {
   position: fixed;
-  bottom: 2vw;
-  right: 2vw;
+  bottom: 30px;
+  right: 30px;
 }
 
 .search input {
+  position: absolute;
+  bottom: 20px;
+  right: 85px;
+  height: 24px;
+  width: 250px;
+  border-radius: 12px;
+  border-style: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #b6b312;
   
 }
 
@@ -41,6 +51,7 @@ main {
   width: 70px;
   border-radius: 35px;
   border-style: none;
+  background-color: #b6b312;
 }
 
 .search img {
