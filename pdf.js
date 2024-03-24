@@ -1,8 +1,48 @@
 import * as pdfjsLib from "./pdfjs-dist/build/pdf.mjs";
 pdfjsLib.GlobalWorkerOptions.workerSrc = "./pdfjs-dist/build/pdf.worker.mjs";
 
-export async function openPDF(pdfPath) {
-    const loadingTask = await pdfjsLib.getDocument(pdfPath);
+let started = false;
+export async function pdfSetup() {
+    var reader = new FileReader();
+    const inputElement = document.getElementById("fileItem");
+
+    inputElement.addEventListener("change", () => {
+        if (typeof inputElement.files[0] === "object") {
+            reader.readAsArrayBuffer(inputElement.files[0]);
+            reader.onload = async (e) => {
+                var myData = new Uint8Array(e.target.result);
+
+                console.log(await openPDF({data: myData}));
+            }
+        }
+    }, false);
+}
+
+async function openPDF(pdfData) {
+    let body = document.getElementById("body");
+
+    let prev = document.getElementById("viewer");
+
+    if (started) {
+        body.removeChild(prev);
+    }
+
+    const blob = new Blob([pdfData.data], { type: 'application/pdf' });
+
+    const url = URL.createObjectURL(blob);
+    
+    let viewer = document.createElement("iframe");
+    viewer.src = url;
+    viewer.type="application/pdf";
+    viewer.id="viewer";
+
+    
+    body.appendChild(viewer);
+
+    started = true;
+
+
+    const loadingTask = await pdfjsLib.getDocument(pdfData);
 
     const pdf = await loadingTask.promise;
 
@@ -31,6 +71,6 @@ async function getPDFText(pdfData){
         }));
     }
     return Promise.all(countPromises).then(texts => {
-        return texts.join('');
+        return texts.join('').split('.');
     });
   }
