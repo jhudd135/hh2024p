@@ -1,0 +1,35 @@
+.header {
+  height: 60px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  font-size: 45px;
+  background-color: #b6b312;
+  color: black;
+  font-family: "Varela Round", Arial;
+}
+
+.title {
+  margin-left: 5vh;
+  white-space: pre;
+}
+
+.upload {
+  margin-top: -8px;
+}
+
+.confirm {
+  background-color: #FC9E4F;
+}
+.confirm button {
+  background-color: inherit;
+}
