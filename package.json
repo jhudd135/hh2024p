@@ -4,6 +4,7 @@
   },
   "type": "module",
   "dependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "wordnet-db": "^3.1.14"
   }
 }
