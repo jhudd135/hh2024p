@@ -28,7 +28,7 @@ async function openPDF(pdfData) {
 
     console.log(textArea);
     if (started) {
-        body.removeChild(prev);
+        main.removeChild(prev);
     } else {
         main.removeChild(textArea);
     }
