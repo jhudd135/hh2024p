@@ -7,6 +7,8 @@ body {
 
 main {
   margin-top: 60px;
+  height: calc(100vh - 60px);
+  width: 100vw;
 }
 
 /* .footer {
@@ -71,13 +73,14 @@ main {
 
 textarea {
   width: 100vw;
-  height: calc(100vh -60);
+  height: calc(100vh);
   padding: 5vh 10vw 0 10vw;
   background-color: inherit;
   border-style: none;
   color: inherit;
   resize: none;
   outline-style: none;
+  overflow-wrap: break-word;
 }
 
 .text {
